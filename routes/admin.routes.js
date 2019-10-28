@@ -1,13 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const { viewPath } = require('../utils/path')
-
 const products = []
 
 router.get('/add-product', (req, res) => {
-  console.log('Add product')
-  res.sendFile(viewPath('add-product.html'))
+  res.render('add-product', {title: 'Add Product', path: '/admin/add-product'})
 })
 
 router.post('/add-product', (req, res) => {
