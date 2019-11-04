@@ -2,7 +2,7 @@ const fs = require('fs')
 
 const { dataPath } = require('../utils/path')
 
-const getProductsFromFile = (cb) => {
+const getProductsFromFile = cb => {
   fs.readFile(dataPath, (err, fileContent) => {
     if (err) {
       return cb([])
@@ -12,12 +12,15 @@ const getProductsFromFile = (cb) => {
 }
 
 class Product {
-  constructor(t) {
-    this.title = t
+  constructor(title, imageUrl, description, price) {
+    this.title = title
+    this.imageUrl = imageUrl
+    this.description = description
+    this.price = price
   }
 
   save() {
-    getProductsFromFile((products) =>{
+    getProductsFromFile(products => {
       products.push(this)
       fs.writeFile(dataPath, JSON.stringify(products), err => {
         console.log(err)
