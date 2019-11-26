@@ -7,6 +7,7 @@ block content
         each p in products
           li= `Nombre: ${p.productData.title}, cantidad: ${p.quantity}`
           form(action='/cart-delete-item' method="POST")
+            input(type="hidden", name="productId", value=p.productData.id)
             button.btn(type='submit') Delete
     else
       h1 No products in cart

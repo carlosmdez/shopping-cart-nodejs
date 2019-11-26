@@ -42,6 +42,9 @@ class Cart {
       let cart = JSON.parse(fileContent)
       const updatedCart = { ...cart }
       const product = updatedCart.products.find(product => product.id === id)
+      if (!product) {
+        return
+      }
       const productQuantity = product.quantity
       updatedCart.products = updatedCart.products.filter(
         product => product.id !== id
